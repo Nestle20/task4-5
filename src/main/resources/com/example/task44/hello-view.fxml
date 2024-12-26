@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<!-- Добавленный импорт -->
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.task44.HelloController">
+    <!-- Кнопка "Выберите папку" -->
+    <Button fx:id="chooseDirectoryButton" onAction="#chooseDirectory" prefHeight="54.0" style="-fx-background-color: gray; -fx-background-radius: 0; -fx-pref-width: 100; -fx-pref-height: 50;" text="Выбрать папку" textFill="WHITE" />
+
+    <!-- ImageView для отображения изображений -->
+    <ImageView fx:id="screen" fitHeight="400" fitWidth="600" />
+
+    <!-- Панель с кнопками управления -->
+    <HBox alignment="CENTER" spacing="10">
+        <Button fx:id="firstButton" onAction="#goToFirstImage" style="-fx-background-radius: 8; -fx-font-size: 3; -fx-background-size: 3; -fx-padding: -2;" />
+        <Button fx:id="previousButton" onAction="#previousImage" style="-fx-background-radius: 8; -fx-padding: -2;" />
+        <Button fx:id="startButton" onAction="#startSlideshow" style="-fx-background-radius: 8; -fx-padding: -2;" />
+        <Button fx:id="stopButton" onAction="#stopSlideshow" style="-fx-background-radius: 8; -fx-padding: -2;" />
+        <Button fx:id="nextButton" onAction="#nextImage" style="-fx-background-radius: 8; -fx-padding: -2;" />
+        <Button fx:id="lastButton" onAction="#goToLastImage" style="-fx-background-radius: 8; -fx-padding: -2;" />
+    </HBox>
+
+    <!-- Панель с индикатором -->
+    <VBox>
+        <Label />
+        <!-- Центрирование AnchorPane с индикатором -->
+        <AnchorPane fx:id="indicatorPane" prefHeight="50" prefWidth="600" />
+    </VBox>
+</VBox>

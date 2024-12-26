@@ -1,0 +1,94 @@
+@startuml
+class com.example.task44.HelloController {
+- ImageView screen
+- Pane indicatorPane
+- Button startButton
+- {static} int SLIDESHOW_DELAY
+- ConcreteAggregate slides
+- Iterator iter
+- Timeline timeline
+- boolean isPlaying
+- Builder indicatorBuilder
+- int currentSlideIndex
+- int totalSlides
++ void initialize()
+- void setButtonGraphics()
+- void setButtonGraphic(Button,String)
++ void startSlideshow()
++ void stopSlideshow()
++ void chooseDirectory()
+- void updateIndicator()
++ void nextImage()
++ void previousImage()
++ void goToFirstImage()
++ void goToLastImage()
+- void updateSlide(Image)
+}
+
+
+class com.example.task44.HelloApplication {
++ void start(Stage)
++ {static} void main(String[])
+}
+
+interface com.example.task44.Aggregate {
+~ Iterator getIterator()
+}
+
+class com.example.task44.Indicator {
+- Pane panel
++ void add(Pane)
++ void show(Pane)
++ void clear()
+}
+
+
+class com.example.task44.ConcreteAggregate {
+- List<File> imageFiles
+- void loadImages(File)
++ Image getFirstImage()
++ Image getLastImage()
++ int size()
++ Iterator getIterator()
+}
+
+
+class com.example.task44.ConcreteAggregate$ImageIterator {
+- int index
++ boolean hasNext()
++ Object next()
++ Object preview()
+}
+
+
+class com.example.task44.ConcreteBuilder {
+- Indicator indicator
+- int totalSlides
++ void reset()
++ void setIndicator(int,int)
++ void linePaint(int)
++ Indicator build()
+}
+
+
+interface com.example.task44.Iterator {
+~ boolean hasNext()
+~ Object next()
+~ Object preview()
+}
+
+interface com.example.task44.Builder {
+~ void reset()
+~ void setIndicator(int,int)
+~ void linePaint(int)
+~ Indicator build()
+}
+
+
+
+javafx.application.Application <|-- com.example.task44.HelloApplication
+com.example.task44.Aggregate <|.. com.example.task44.ConcreteAggregate
+com.example.task44.ConcreteAggregate +.. com.example.task44.ConcreteAggregate$ImageIterator
+com.example.task44.Iterator <|.. com.example.task44.ConcreteAggregate$ImageIterator
+com.example.task44.Builder <|.. com.example.task44.ConcreteBuilder
+@enduml
